@@ -10,15 +10,26 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+const info = {
+  id: '',
+  msg: '',
+  key: 'id',
+  value: 'info'
+};
+
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  info.id = socket.id;
+  info.msg = `Welcome! ${info.id} is connected!`;
+  io.emit('info', info);
 
   socket.on('chat message', (msg) => {
-    io.emit('chat message', msg);
+    io.emit('chat message', {msg});
   });
 
   socket.on('disconnect', () => {
-    console.log('user disconnected');
+    info.id = socket.id;
+    info.msg = `Bye~ ${info.id}!`;
+    io.emit('info', info);
   });
 });
 

@@ -26,6 +26,7 @@ form button {
   padding: 5px 10px;
 }
 
-#messages li:nth-child(odd) {
-  background: #eee;
+#info {
+  font-style: italic;
+  color: #bfbcb9;
 }

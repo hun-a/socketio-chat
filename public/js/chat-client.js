@@ -1,5 +1,14 @@
 const socket = io();
 
+const addLiTag = info => {
+  const li = document.createElement('li');
+  li.innerHTML = info.msg;
+  if (info.key) {
+    li.setAttribute(info.key, info.value);
+  }
+  document.getElementById('messages').appendChild(li);
+};
+
 document.getElementById('message-form').addEventListener('submit', (e) => {
   e.preventDefault();
   const msg = document.getElementById('m');
@@ -7,8 +16,6 @@ document.getElementById('message-form').addEventListener('submit', (e) => {
   msg.value = '';
 }, false);
 
-socket.on('chat message', (msg) => {
-  const li = document.createElement('li');
-  li.innerHTML = msg;
-  document.getElementById('messages').appendChild(li);
-});
+socket.on('chat message', addLiTag);
+
+socket.on('info', addLiTag);
