@@ -38,3 +38,24 @@ form button {
   background-color: #99ddff;
   width: 100%;
 }
+
+#nickname-form {
+  background: #0084ff;
+  padding: 20px;
+  position: fixed;
+  width: 300px;
+  bottom: 50%;
+  text-align: center;
+}
+
+#nickname-form input {
+  padding: 10px;
+  border: 0;
+  width: 200px;
+  margin-right: .5%;
+}
+
+#nickname-form button {
+  width: 50px;
+  padding: 10px;
+}

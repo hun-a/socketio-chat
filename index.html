@@ -6,12 +6,9 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-    <ul id="messages"></ul>
-    <form id="message-form" action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/chat-client.js"></script>
+      <form id="nickname-form" action="chat" method="post">
+        <input id="nickname-text" placeholder="Nick Name" name="nickname"/>
+        <button id="nickname-btn">Join</button>
+      </form>
   </body>
 </html>
