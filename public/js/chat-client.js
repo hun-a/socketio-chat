@@ -1,6 +1,6 @@
 const socket = io();
 
-const addLiTag = info => {
+const displayMsg = info => {
   const li = document.createElement('li');
   li.innerHTML = info.msg;
   if (info.key) {
@@ -16,6 +16,6 @@ document.getElementById('message-form').addEventListener('submit', (e) => {
   msg.value = '';
 }, false);
 
-socket.on('chat message', addLiTag);
+socket.on('chat message', displayMsg);
 
-socket.on('info', addLiTag);
+socket.on('info', displayMsg);
