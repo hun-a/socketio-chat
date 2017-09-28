@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     info.id = userList[socket.id];
-    info.msg = `Bye~ ${info.id}!`;
+    info.msg = `${info.id} has disconnected!`;
     io.emit('info', info);
   });
 });
