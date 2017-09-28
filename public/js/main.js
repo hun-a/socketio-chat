@@ -34,20 +34,23 @@ function openChat(e) {
   document.querySelector('#container').innerHTML = page;
 
   const nickname = document.querySelector('#nickname').getAttribute('value');
-
   const socket = io();
 
   socket.emit('new-connect', nickname);
 
   document.querySelector('#m').focus();
 
+  const myNickname = document.querySelector('#nickname').getAttribute('value');
+
   const displayMsg = info => {
-    const myNickname = document.querySelector('#nickname').getAttribute('value');
     const li = document.createElement('li');
 
     if (info.key) {
       li.innerHTML = info.msg;
       li.setAttribute(info.key, info.value);
+      if (info.value === 'typing') {
+        li.setAttribute('name', info.id);
+      }
     } else {
       let nicknameClass = 'chat-nickname';
       let msgClass = 'chat-message';
@@ -65,7 +68,7 @@ function openChat(e) {
       li.appendChild(idDiv);
       li.appendChild(msgDiv);
     }
-
+    removeTypingMsg(info.id);
     document.getElementById('messages').appendChild(li);
   };
 
@@ -75,6 +78,20 @@ function openChat(e) {
     socket.emit('chat message', msg.value);
     msg.value = '';
   }, false);
+
+  document.querySelector('#m').addEventListener('keyup', (e) => {
+    if (e.keyCode !== 13) {
+      socket.emit('typing');
+    }
+  });
+
+  const removeTypingMsg = (id) => {
+    const parent = document.querySelector('ul');
+    const child = document.querySelector(`li.typing[name='${id}']`);
+    if (child) {
+      parent.removeChild(child);
+    }
+  }
 
   socket.on('chat message', displayMsg);
 

@@ -13,8 +13,8 @@ app.get('/', (req, res) => {
 const info = {
   id: '',
   msg: '',
-  key: 'id',
-  value: 'info'
+  key: 'class',
+  value: ''
 };
 
 const userList = {};
@@ -25,6 +25,7 @@ io.on('connection', (socket) => {
     userList[socket.id] = nickname;
     info.id = nickname;
     info.msg = `Welcome! ${info.id} is connected!`;
+    info.value = 'info';
     io.emit('info', info);
   });
 
@@ -35,8 +36,16 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     info.id = userList[socket.id];
     info.msg = `${info.id} has disconnected!`;
+    info.value = 'info';
     io.emit('info', info);
   });
+
+  socket.on('typing', () => {
+    info.id = userList[socket.id];
+    info.msg = `${info.id} is typing...`;
+    info.value = 'typing';
+    io.emit('info', info);
+  })
 });
 
 http.listen(3000, () => {

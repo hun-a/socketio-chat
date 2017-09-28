@@ -27,15 +27,6 @@ form button {
   list-style-type: none; margin: 0; padding: 0;
 }
 
-#info {
-  font-style: italic;
-  color: #808080;
-  text-align: center;
-  background-color: #99ddff;
-  width: 100%;
-  padding-top: 35px;
-}
-
 #nickname-container {
   background: #0084ff;
   padding: 20px;
@@ -86,4 +77,24 @@ form button {
   border-radius: 5px;
   position: fixed;
   right: 0%;
+}
+
+.typing {
+  font-style: italic;
+  color: #808080;
+  background-color: #99ddff;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  bottom: 50px;
+  height: 10px;
+}
+
+.info {
+  font-style: italic;
+  color: #808080;
+  text-align: center;
+  background-color: #99ddff;
+  width: 100%;
+  padding-top: 35px;
 }
