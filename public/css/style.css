@@ -11,6 +11,10 @@ form {
   background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%;
 }
 
+li {
+  height: 80px;
+}
+
 form input {
   border: 0; padding: 10px; width: 90%; margin-right: .5%;
 }
@@ -29,6 +33,7 @@ form button {
   text-align: center;
   background-color: #99ddff;
   width: 100%;
+  padding-top: 35px;
 }
 
 #nickname-container {
@@ -53,7 +58,6 @@ form button {
   padding: 10px;
 }
 
-
 .chat-nickname {
   padding-top: 5px;
   margin: 5px 12px;
@@ -65,4 +69,21 @@ form button {
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
+}
+
+.chat-nickname-me {
+  padding-top: 5px;
+  margin: 10px 12px;
+  position: fixed;
+  right: 0%;
+}
+
+.chat-message-me {
+    width: max-content;
+  background-color: white;
+  padding: 10px;
+  margin: 40px 10px;
+  border-radius: 5px;
+  position: fixed;
+  right: 0%;
 }

@@ -42,16 +42,24 @@ function openChat(e) {
   document.querySelector('#m').focus();
 
   const displayMsg = info => {
+    const myNickname = document.querySelector('#nickname').getAttribute('value');
     const li = document.createElement('li');
 
     if (info.key) {
       li.innerHTML = info.msg;
       li.setAttribute(info.key, info.value);
     } else {
+      let nicknameClass = 'chat-nickname';
+      let msgClass = 'chat-message';
+
+      if (info.id === myNickname) {
+        nicknameClass += '-me';
+        msgClass += '-me';
+      }
       const idDiv = document.createElement('div');
-      idDiv.setAttribute('class', 'chat-nickname');
       const msgDiv = document.createElement('div');
-      msgDiv.setAttribute('class', 'chat-message');
+      idDiv.setAttribute('class', nicknameClass);
+      msgDiv.setAttribute('class', msgClass);
       idDiv.innerHTML = info.id;
       msgDiv.innerHTML = info.msg;
       li.appendChild(idDiv);
