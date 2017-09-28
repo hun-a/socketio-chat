@@ -39,7 +39,7 @@ form button {
   width: 100%;
 }
 
-#nickname-form {
+#nickname-container {
   background: #0084ff;
   padding: 20px;
   position: fixed;
@@ -48,14 +48,14 @@ form button {
   text-align: center;
 }
 
-#nickname-form input {
+#nickname-container input {
   padding: 10px;
   border: 0;
   width: 200px;
   margin-right: .5%;
 }
 
-#nickname-form button {
+#nickname-container button {
   width: 50px;
   padding: 10px;
 }

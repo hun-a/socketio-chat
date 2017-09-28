@@ -17,17 +17,23 @@ const info = {
   value: 'info'
 };
 
+const userList = {};
+
 io.on('connection', (socket) => {
-  info.id = socket.id;
-  info.msg = `Welcome! ${info.id} is connected!`;
-  io.emit('info', info);
+
+  socket.on('new-connect', nickname => {
+    userList[socket.id] = nickname;
+    info.id = nickname;
+    info.msg = `Welcome! ${info.id} is connected!`;
+    io.emit('info', info);
+  });
 
   socket.on('chat message', (msg) => {
     io.emit('chat message', {msg});
   });
 
   socket.on('disconnect', () => {
-    info.id = socket.id;
+    info.id = userList[socket.id];
     info.msg = `Bye~ ${info.id}!`;
     io.emit('info', info);
   });

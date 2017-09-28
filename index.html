@@ -6,9 +6,16 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-      <form id="nickname-form" action="chat" method="post">
-        <input id="nickname-text" placeholder="Nick Name" name="nickname"/>
-        <button id="nickname-btn">Join</button>
-      </form>
+      <div id="container">
+        <div id="nickname-container">
+          <input id="nickname-text" placeholder="Nick Name" name="nickname"/>
+          <button id="nickname-btn">Join</button>
+        </div>
+      </div>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="js/main.js"></script>
+      
+      <span id="nickname"></span>
   </body>
 </html>
