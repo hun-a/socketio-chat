@@ -56,4 +56,8 @@ function openChat(e) {
   socket.on('chat message', displayMsg);
 
   socket.on('info', displayMsg);
+
+  socket.on('disconnect', () => {
+    socket.close();
+  });
 }
