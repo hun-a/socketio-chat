@@ -44,6 +44,7 @@ form button {
   padding: 20px;
   position: fixed;
   width: 300px;
+  left: 37%;
   bottom: 50%;
   text-align: center;
 }
