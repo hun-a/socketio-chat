@@ -1,3 +1,5 @@
+document.querySelector('#nickname-text').focus();
+
 document.querySelector('#nickname-text').addEventListener('change', e => {
   document.querySelector('#nickname').setAttribute('value', e.target.value);
 }, false);
@@ -37,12 +39,25 @@ function openChat(e) {
 
   socket.emit('new-connect', nickname);
 
+  document.querySelector('#m').focus();
+
   const displayMsg = info => {
     const li = document.createElement('li');
-    li.innerHTML = info.msg;
+
     if (info.key) {
+      li.innerHTML = info.msg;
       li.setAttribute(info.key, info.value);
+    } else {
+      const idDiv = document.createElement('div');
+      idDiv.setAttribute('class', 'chat-nickname');
+      const msgDiv = document.createElement('div');
+      msgDiv.setAttribute('class', 'chat-message');
+      idDiv.innerHTML = info.id;
+      msgDiv.innerHTML = info.msg;
+      li.appendChild(idDiv);
+      li.appendChild(msgDiv);
     }
+
     document.getElementById('messages').appendChild(li);
   };
 
